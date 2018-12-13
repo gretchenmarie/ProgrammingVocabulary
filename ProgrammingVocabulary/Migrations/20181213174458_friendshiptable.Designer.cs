@@ -10,8 +10,8 @@ using ProgrammingVocabulary.Data;
 namespace ProgrammingVocabulary.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181212152816_Initial")]
-    partial class Initial
+    [Migration("20181213174458_friendshiptable")]
+    partial class friendshiptable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -191,6 +191,33 @@ namespace ProgrammingVocabulary.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("ProgrammingVocabulary.Models.Friendship", b =>
+                {
+                    b.Property<int>("FriendshipId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Friend1Id")
+                        .IsRequired();
+
+                    b.Property<string>("Friend2Id")
+                        .IsRequired();
+
+                    b.Property<string>("User1Id")
+                        .IsRequired();
+
+                    b.Property<string>("User2Id")
+                        .IsRequired();
+
+                    b.HasKey("FriendshipId");
+
+                    b.HasIndex("Friend1Id");
+
+                    b.HasIndex("Friend2Id");
+
+                    b.ToTable("Friendship");
+                });
+
             modelBuilder.Entity("ProgrammingVocabulary.Models.Language", b =>
                 {
                     b.Property<int>("LanguageId")
@@ -294,10 +321,23 @@ namespace ProgrammingVocabulary.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("ProgrammingVocabulary.Models.Friendship", b =>
+                {
+                    b.HasOne("ProgrammingVocabulary.Models.ApplicationUser", "Friend1")
+                        .WithMany()
+                        .HasForeignKey("Friend1Id")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ProgrammingVocabulary.Models.ApplicationUser", "Friend2")
+                        .WithMany()
+                        .HasForeignKey("Friend2Id")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("ProgrammingVocabulary.Models.Vocabulary", b =>
                 {
                     b.HasOne("ProgrammingVocabulary.Models.Language", "Language")
-                        .WithMany()
+                        .WithMany("Vocabulary")
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade);
 

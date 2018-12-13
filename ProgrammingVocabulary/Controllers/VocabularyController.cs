@@ -26,8 +26,10 @@ namespace ProgrammingVocabulary.Controllers
             _context = ctx;
         }
 
-       
 
+        //Get:User
+       // public async Task<IActionResult> GetUsers()
+        
        
 
        
@@ -41,6 +43,16 @@ namespace ProgrammingVocabulary.Controllers
         public async Task<IActionResult> GetJavaScript()
         {
             var applicationDbContext = _context.Vocabulary.Where(l => l.LanguageId == 1);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> GetCSharp()
+        {
+            var applicationDbContext = _context.Vocabulary.Where(l => l.LanguageId == 2);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> GetGeneralVocabulary()
+        {
+            var applicationDbContext = _context.Vocabulary.Where(l => l.LanguageId == 3);
             return View(await applicationDbContext.ToListAsync());
         }
 

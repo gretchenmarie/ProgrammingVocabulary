@@ -26,16 +26,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ProgrammingVocabulary</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Flashcode</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="Index"> All Vocabulary</a></li>
+                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="GetUsers">Friends</a></li>
+                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="Index">Vocabulary List</a></li>
                     <li><a asp-area="" asp-controller="Languages" asp-action="Index"> Languages</a></li>
-                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="GetJavaScript"> JavaScript</a></li>
-                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="Index"> C# .Net</a></li>
-                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="Index"> General Vocabulary</a></li>
+                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="GetJavaScript"> JavaScript Flashcards</a></li>
+                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="GetCSharp"> C#.Net Flashcards</a></li>
+                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="GetGeneralVocabulary"> General Flashcards</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
                 <partial name="_LoginPartial" />

@@ -17,5 +17,6 @@ namespace ProgrammingVocabulary.Data
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Language> Language { get; set; }       
         public DbSet<Vocabulary> Vocabulary { get; set; }
+        public DbSet<Friendship> Friendship{ get; set; }
     }
 }

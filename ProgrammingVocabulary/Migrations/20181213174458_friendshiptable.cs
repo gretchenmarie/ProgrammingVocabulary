@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProgrammingVocabulary.Migrations
 {
-    public partial class Initial : Migration
+    public partial class friendshiptable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -170,6 +170,34 @@ namespace ProgrammingVocabulary.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Friendship",
+                columns: table => new
+                {
+                    FriendshipId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    User1Id = table.Column<string>(nullable: false),
+                    Friend1Id = table.Column<string>(nullable: false),
+                    User2Id = table.Column<string>(nullable: false),
+                    Friend2Id = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Friendship", x => x.FriendshipId);
+                    table.ForeignKey(
+                        name: "FK_Friendship_AspNetUsers_Friend1Id",
+                        column: x => x.Friend1Id,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_Friendship_AspNetUsers_Friend2Id",
+                        column: x => x.Friend2Id,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Vocabulary",
                 columns: table => new
                 {
@@ -238,6 +266,16 @@ namespace ProgrammingVocabulary.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Friendship_Friend1Id",
+                table: "Friendship",
+                column: "Friend1Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Friendship_Friend2Id",
+                table: "Friendship",
+                column: "Friend2Id");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Vocabulary_LanguageId",
                 table: "Vocabulary",
                 column: "LanguageId");
@@ -264,6 +302,9 @@ namespace ProgrammingVocabulary.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Friendship");
 
             migrationBuilder.DropTable(
                 name: "Vocabulary");

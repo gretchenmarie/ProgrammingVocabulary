@@ -9,51 +9,36 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Word)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Definition)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Link)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Language)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Word)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Definition)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Link)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Language.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.VocabularyId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.VocabularyId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.VocabularyId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+
+
+    @foreach (var item in Model)
+    {
+
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h1>
+                        @Html.DisplayFor(modelItem => item.Word)
+                    </h1>
+                </div>
+                <div class="flip-card-back">
+
+                    <p>
+                        @Html.DisplayFor(modelItem => item.Definition)
+
+                    </p>
+
+                    <p>
+                        @Html.DisplayFor(modelItem => item.Link)
+                    </p>
+
+                    <p>
+                        @Html.DisplayFor(modelItem => item.Language.Name)
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+   

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ProgrammingVocabulary.Models.Vocabulary>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "GetGeneralVocabulary";
 }
 
-<h2>Index</h2>
+<h2>GetGeneralVocabulary</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -21,7 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Link)
             </th>
-           
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Language)
             </th>
@@ -40,7 +42,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Link)
             </td>
-           
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Language.Name)
             </td>
