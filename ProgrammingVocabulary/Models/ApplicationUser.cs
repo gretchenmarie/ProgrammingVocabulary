@@ -19,11 +19,11 @@ namespace ProgrammingVocabulary.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-       
+
 
 
         // Set up PK -> FK relationships to other objects
-       
-       public virtual ICollection<Vocabulary> Vocabulary { get; set; }
+        public ICollection<UserVocabulary> UserVocabulary { get; set; }
+        public virtual ICollection<Vocabulary> Vocabulary { get; set; }
     }
 }

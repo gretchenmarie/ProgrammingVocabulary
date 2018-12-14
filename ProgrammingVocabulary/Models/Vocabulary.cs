@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProgrammingVocabulary.Models
 {
@@ -28,6 +30,9 @@ namespace ProgrammingVocabulary.Models
         [Required]
         public int LanguageId { get; set; }
         public Language Language { get; set; }
-        
+
+        public ICollection<UserVocabulary> UserVocabulary { get; set; }
+
+
     }
 }

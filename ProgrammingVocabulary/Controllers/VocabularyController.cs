@@ -27,23 +27,38 @@ namespace ProgrammingVocabulary.Controllers
         }
 
 
-        //Get:User
-       // public async Task<IActionResult> GetUsers()
-        
-       
 
-       
-
-        // GET: Vocabulary
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> FavoriteVocabulary([FromRoute]int id)
         {
-            var applicationDbContext = _context.Vocabulary.Include(v => v.Language);
+            var user = await GetCurrentUserAsync();
+
+            UserVocabulary newUV = new UserVocabulary()
+            {
+
+                UserId = user.Id,
+                VocabularyId = id
+            };
+            _context.Add(newUV);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+
+        }
+      
+    
+ 
+        // GET: Vocabulary
+        public async Task<IActionResult> Index(string sortOrder)
+        {         
+            var applicationDbContext = _context.Vocabulary.Include(v => v.Language).OrderBy(v => v.Word); ;
             return View(await applicationDbContext.ToListAsync());
         }
         public async Task<IActionResult> GetJavaScript()
         {
             var applicationDbContext = _context.Vocabulary.Where(l => l.LanguageId == 1);
             return View(await applicationDbContext.ToListAsync());
+            
         }
         public async Task<IActionResult> GetCSharp()
         {
