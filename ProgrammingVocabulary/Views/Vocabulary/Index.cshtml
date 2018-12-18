@@ -21,7 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Link)
             </th>
-           
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Language)
             </th>
@@ -40,11 +42,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Link)
             </td>
-           
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Language.Name)
             </td>
-            <td><a asp-action="FavoriteVocabulary" asp-route-id="@item.VocabularyId">Save</a>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.VocabularyId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.VocabularyId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.VocabularyId">Delete</a>
