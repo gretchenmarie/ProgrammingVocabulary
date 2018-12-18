@@ -27,7 +27,6 @@ namespace ProgrammingVocabulary.Controllers
         }
 
 
-
         public async Task<IActionResult> FavoriteVocabulary([FromRoute]int id)
         {
             var user = await GetCurrentUserAsync();
@@ -45,13 +44,12 @@ namespace ProgrammingVocabulary.Controllers
             return RedirectToAction(nameof(Index));
 
         }
-      
-    
- 
+
+
         // GET: Vocabulary
-        public async Task<IActionResult> Index(string sortOrder)
+        public async Task<IActionResult> Index( string sortOrder)
         {         
-            var applicationDbContext = _context.Vocabulary.Include(v => v.Language).OrderBy(v => v.Word); ;
+            var applicationDbContext = _context.Vocabulary.Include(v => v.Language).OrderBy(v => v.Word);
             return View(await applicationDbContext.ToListAsync());
         }
         public async Task<IActionResult> GetJavaScript()
@@ -70,6 +68,13 @@ namespace ProgrammingVocabulary.Controllers
             var applicationDbContext = _context.Vocabulary.Where(l => l.LanguageId == 3);
             return View(await applicationDbContext.ToListAsync());
         }
+        public async Task<IActionResult> Favoritelist()
+        {
+            var applicationDbContext = _context.Vocabulary.Include(v => v.UserVocabulary).OrderBy(v => v.Word); 
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+
 
         // GET: Vocabularies/Details/5
         public async Task<IActionResult> Details(int? id)
