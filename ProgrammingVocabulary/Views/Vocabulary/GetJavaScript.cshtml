@@ -7,38 +7,44 @@
 <h2>JavaScript Flashcards</h2>
 
 @*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
+        <a asp-action="Create">Create New</a>
+    </p>*@
 
 
 
-    @foreach (var item in Model)
-    {
+@foreach (var item in Model)
+{
 
 
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <h1>
-                        @Html.DisplayFor(modelItem => item.Word)
-                    </h1>
-                </div>
-                <div class="flip-card-back">
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <h1>
+                    @Html.DisplayFor(modelItem => item.Word)
+                </h1>
+            </div>
+            <div class="flip-card-back">
 
-                    <p>
-                        @Html.DisplayFor(modelItem => item.Definition)
+                <p>
+                    @Html.DisplayFor(modelItem => item.Definition)
 
-                    </p>
+                </p>
 
-                    <p>
-                        @Html.DisplayFor(modelItem => item.Link)
-                    </p>
+                <p>
+                    @Html.DisplayFor(modelItem => item.Link)
+                </p>
 
-                    <p>
-                        @Html.DisplayFor(modelItem => item.Language)
-                    </p>
-                </div>
+                <p>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </p>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.VocabularyId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.VocabularyId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.VocabularyId">Delete</a>
+                </td>
             </div>
         </div>
-    }
-   
+    </div>
+
+}
+

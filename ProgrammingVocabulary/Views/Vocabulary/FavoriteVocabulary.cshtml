@@ -1,0 +1,60 @@
+﻿@model ProgrammingVocabulary.Models.Vocabulary
+
+@{
+    ViewData["Title"] = "FavoriteVocabulary";
+}
+
+<h2>FavoriteVocabulary</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Word)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Definition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Link)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Word)
+                </td>
+                <td>
+                    @Html.DisplayFor(model =>model.Definition)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Link)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.User.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Language.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@Model.VocabularyId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@Model">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@Model">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

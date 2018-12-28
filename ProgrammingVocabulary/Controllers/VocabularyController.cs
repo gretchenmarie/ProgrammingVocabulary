@@ -29,7 +29,7 @@ namespace ProgrammingVocabulary.Controllers
 
         public async Task<IActionResult> FavoriteVocabulary([FromRoute]int id)
         {
-            var user = await GetCurrentUserAsync();
+            ApplicationUser user = await GetCurrentUserAsync();
 
             UserVocabulary newUV = new UserVocabulary()
             {
@@ -68,11 +68,11 @@ namespace ProgrammingVocabulary.Controllers
             var applicationDbContext = _context.Vocabulary.Where(l => l.LanguageId == 3);
             return View(await applicationDbContext.ToListAsync());
         }
-        public async Task<IActionResult> Favoritelist()
-        {
-            var applicationDbContext = _context.Vocabulary.Include(v => v.UserVocabulary).OrderBy(v => v.Word); 
-            return View(await applicationDbContext.ToListAsync());
-        }
+        //public async Task<IActionResult> Favoritelist()
+        //{
+        //    var applicationDbContext = _context.Vocabulary.Include(v => v.UserVocabulary).OrderBy(v => v.Word); 
+        //    return View(await applicationDbContext.ToListAsync());
+        //}
 
 
 
@@ -213,7 +213,7 @@ namespace ProgrammingVocabulary.Controllers
         // POST: Vocabularies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed( int id)
         {
             var vocabulary = await _context.Vocabulary.FindAsync(id);
             _context.Vocabulary.Remove(vocabulary);

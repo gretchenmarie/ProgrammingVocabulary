@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ProgrammingVocabulary</title>
+    <title>@ViewData["Title"] - </title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -17,7 +17,7 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class=" navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -33,12 +33,13 @@
 
 
                     <li><a asp-area="" asp-controller="Vocabulary" asp-action="Index">Vocabulary List</a></li>
+                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="FavoriteVocabulary">Saved Vocabulary</a></li>
                     <li><a asp-area="" asp-controller="Languages" asp-action="Index"> Languages</a></li>
-                   
+
                     <li><a asp-area="" asp-controller="Vocabulary" asp-action="GetJavaScript"> JavaScript cards</a></li>
                     <li><a asp-area="" asp-controller="Vocabulary" asp-action="GetCSharp"> C#.Net cards</a></li>
                     <li><a asp-area="" asp-controller="Vocabulary" asp-action="GetGeneralVocabulary"> General cards</a></li>
-                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="concepts"> Larger Concepts</a></li>
+
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
                 <partial name="_LoginPartial" />
