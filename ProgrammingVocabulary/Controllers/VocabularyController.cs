@@ -114,8 +114,8 @@ namespace ProgrammingVocabulary.Controllers
 
             var user = await GetCurrentUserAsync();
 
-            ModelState.Remove("User");
-            ModelState.Remove("UserId");
+           ModelState.Remove("User");
+           ModelState.Remove("UserId");
 
             if (ModelState.IsValid)
             {
