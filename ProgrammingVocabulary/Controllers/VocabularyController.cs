@@ -17,6 +17,8 @@ namespace ProgrammingVocabulary.Controllers
 
         private readonly UserManager<ApplicationUser> _userManager;
 
+       
+
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         public VocabularyController(ApplicationDbContext ctx,

@@ -15,69 +15,167 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        .mynav_navbar {
+            overflow: hidden;
+            background-color: transparent;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+
+            .mynav_navbar a {
+                float: left;
+                font-size: 16px;
+                color: grey;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+
+
+        .mynav_dropdown {
+            float: left;
+            overflow: inherit;
+        }
+
+
+
+            .mynav_dropdown .mynav_dropbtn {
+                font-size: 16px;
+                border: none;
+                outline: none;
+                color: white;
+                padding: 14px 16px;
+                background-color: inherit;
+                font-family: inherit;
+                margin: 0;
+            }
+
+
+
+            .mynav_navbar a:hover, .mynav_dropdown:hover .mynav_dropbtn {
+                background-color: dimgray;
+            }
+
+
+
+        .mynav_dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+
+
+            .mynav_dropdown-content a {
+                float: none;
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+
+
+
+                .mynav_dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+
+
+        .mynav_dropdown:hover .mynav_dropdown-content {
+            display: block;
+        }
+
+        .glyphicon {
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <nav class=" navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"> Home</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+
+                    <div class="container">
+
+                        <div class="navbar-header">
+
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"> Home</a>
+                            <a asp-area="" asp-controller="Vocabulary" asp-action="Index" class="navbar-brand">Vocabulary </a>
+                            <a asp-area="" asp-controller="Vocabulary" asp-action="FavoriteVocabulary" class="navbar-brand">Saved Vocabulary</a>
+                        </div>
 
 
-                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="Index">Vocabulary List</a></li>
-                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="FavoriteVocabulary">Saved Vocabulary</a></li>
-                    <li><a asp-area="" asp-controller="Languages" asp-action="Index"> Languages</a></li>
 
-                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="GetJavaScript"> JavaScript cards</a></li>
-                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="GetCSharp"> C#.Net cards</a></li>
-                    <li><a asp-area="" asp-controller="Vocabulary" asp-action="GetGeneralVocabulary"> General cards</a></li>
+                        <div class="mynav_dropdown">
 
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-                <partial name="_LoginPartial" />
-            </div>
-        </div>
-    </nav>
+                            <button class="mynav_dropbtn">
 
-    <partial name="_CookieConsentPartial" />
+                                Flashcards
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - Flashcode</p>
-        </footer>
-    </div>
+                                <i class="fa fa-caret-down"></i>
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+                            </button>
 
-    @RenderSection("Scripts", required: false)
+                            <div class="mynav_dropdown-content">
+
+
+                                <a asp-area="" asp-controller="Vocabulary" asp-action="GetJavaScript"> JavaScript cards</a>
+                                <a asp-area="" asp-controller="Vocabulary" asp-action="GetCSharp"> C#.Net cards</a>
+                                <a asp-area="" asp-controller="Vocabulary" asp-action="GetGeneralVocabulary"> General cards</a>
+
+                            </div>
+
+                        </div>
+
+                        <partial name="_LoginPartial" />
+                    </div>
+                       
+               
+
+                </nav>
+
+
+                <partial name="_CookieConsentPartial" />
+
+                <div class="container body-content">
+                    @RenderBody()
+                    <hr />
+                    <footer>
+                        <p>&copy; 2018 - Flashcode</p>
+                    </footer>
+                </div>
+
+                <environment include="Development">
+                    <script src="~/lib/jquery/dist/jquery.js"></script>
+                    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+                    <script src="~/js/site.js" asp-append-version="true"></script>
+                </environment>
+                <environment exclude="Development">
+                    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                            asp-fallback-test="window.jQuery"
+                            crossorigin="anonymous"
+                            integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+                    </script>
+                    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                            crossorigin="anonymous"
+                            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+                    </script>
+                    <script src="~/js/site.min.js" asp-append-version="true"></script>
+                </environment>
+
+                @RenderSection("Scripts", required: false)
 </body>
 </html>
