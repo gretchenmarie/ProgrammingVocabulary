@@ -70,12 +70,13 @@ namespace ProgrammingVocabulary.Controllers
             var applicationDbContext = _context.Vocabulary.Where(l => l.LanguageId == 3);
             return View(await applicationDbContext.ToListAsync());
         }
-        //public async Task<IActionResult> Favoritelist()
-        //{
-        //    var applicationDbContext = _context.Vocabulary.Include(v => v.UserVocabulary).OrderBy(v => v.Word); 
-        //    return View(await applicationDbContext.ToListAsync());
-        //}
-
+        public async Task<IActionResult> Favoritelist()
+        {//get the vocabulary include any vocabulary where the user has saved the vocabulary word
+            ApplicationUser user = await GetCurrentUserAsync();
+            var applicationDbContext = _context.Vocabulary.Include(uv => uv.UserVocabulary).Where(v => v.UserVocabulary.Any(uv => uv.UserId==user.Id));
+            return View(await applicationDbContext.ToListAsync());
+        }
+ 
 
 
         // GET: Vocabularies/Details/5

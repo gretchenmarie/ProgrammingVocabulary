@@ -21,14 +21,14 @@
                 </h1>
             </div>
             <div class="flip-card-back">
-
+                <a href="~/Views/Vocabulary/GetCSharp.cshtml">~/Views/Vocabulary/GetCSharp.cshtml</a>
                 <p>
                     @Html.DisplayFor(modelItem => item.Definition)
 
                 </p>
 
                 <p>
-                    @Html.DisplayFor(modelItem => item.Link)
+                   <a href=" @Html.DisplayFor(modelItem => item.Link)" target="_blank">@Html.DisplayFor(modelItem => item.Link)</a>
                 </p>
 
                 <p>

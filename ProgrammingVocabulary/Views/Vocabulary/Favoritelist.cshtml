@@ -1,4 +1,4 @@
-﻿@model ProgrammingVocabulary.Models.Vocabulary
+﻿@model IEnumerable<ProgrammingVocabulary.Models.Vocabulary>
 
 @{
     ViewData["Title"] = "My Vocabulary Study List";
@@ -31,28 +31,28 @@
         </tr>
     </thead>
     <tbody>
-       
+        @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(model => model.Word)
+                    @Html.DisplayFor(modelItem => item.Word)
                 </td>
                 <td>
-                    @Html.DisplayFor(model =>model.Definition)
+                    @Html.DisplayFor(modelItem => item.Definition)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.Link)
+                    @Html.DisplayFor(modelItem => item.Link)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.User.Id)
-                </td>
                 <td>
-                    @Html.DisplayFor(model => model.Language.Name)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@Model.VocabularyId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@Model">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@Model">Delete</a>
+                    <a asp-action="FavoriteVocabulary" asp-route-id="@item.VocabularyId" class="navbar-brand">Save</a>
+                    <a asp-action="Edit" asp-route-id="@item.VocabularyId" class="navbar-brand">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.VocabularyId" class="navbar-brand">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.VocabularyId">Delete</a>
                 </td>
             </tr>
         }
