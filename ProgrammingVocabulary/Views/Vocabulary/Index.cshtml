@@ -38,7 +38,7 @@
                 @Html.DisplayFor(modelItem => item.Definition)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Link)
+                <a href=" @Html.DisplayFor(modelItem => item.Link)" target="_blank">@Html.DisplayFor(modelItem => item.Link)</a>
             </td>
            
             <td>
@@ -47,9 +47,9 @@
             <td>
             <td>
                 <a asp-action="FavoriteVocabulary" asp-route-id="@item.VocabularyId" class="navbar-brand">Save</a>
-                <a asp-action="Edit" asp-route-id="@item.VocabularyId" class="navbar-brand">Edit</a> 
+              
                 <a asp-action="Details" asp-route-id="@item.VocabularyId"class="navbar-brand">Details</a> 
-                <a asp-action="Delete" asp-route-id="@item.VocabularyId">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.VocabularyId"class="navbar-brand">Delete</a>
             </td>
         </tr>
 }
