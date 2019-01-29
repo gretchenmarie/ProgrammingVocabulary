@@ -10,11 +10,11 @@ using ProgrammingVocabulary.Models;
 
 namespace ProgrammingVocabulary.Controllers
 {
-    public class Quiz : Controller
+    public class QuizController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public Quiz(ApplicationDbContext context)
+        public QuizController(ApplicationDbContext context)
         {
             _context = context;
         }
