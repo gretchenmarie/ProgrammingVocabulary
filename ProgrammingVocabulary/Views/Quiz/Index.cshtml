@@ -1,50 +1,57 @@
 ﻿@model IEnumerable<ProgrammingVocabulary.Models.Vocabulary>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Quiz";
 }
 
-<h2>Index</h2>
+<h2>Quiz yourself</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Word)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Definition)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Link)
-            </th>
-           
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Word)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Definition)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Link)
-            </td>
-           
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.VocabularyId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.VocabularyId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.VocabularyId">Delete</a>
-            </td>
-        </tr>
+
+
+
+
+@foreach (var item in Model)
+{
+
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <h1>
+                    @Html.DisplayFor(modelItem => item.Word)
+                </h1>
+               
+            </div>
+            <div class="flip-card-back">
+                <script>
+  $(function() {
+    $('#myCheckbox').change(function() {
+       $('#ShowHideMe').toggle($(this).is(':checked'));
+     });
+  });
+                </script>
+                <input type="checkbox" id="myCheckbox">
+                <div id="ShowHideMe">
+                    <p>@Html.DisplayFor(modelItem => item.Definition)</p>
+                </div>
+
+                <p>
+                    @Html.TextArea("definition", null, new { @class = "form-control" })
+
+                </p>
+                <p>
+                    <a href=" @Html.DisplayFor(modelItem => item.Link)" target="_blank">@Html.DisplayFor(modelItem => item.Link)</a>
+                </p>
+
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.VocabularyId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.VocabularyId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.VocabularyId">Delete</a>
+                </td>
+            </div>
+        </div>
+    </div>
+
 }
-    </tbody>
-</table>
+
