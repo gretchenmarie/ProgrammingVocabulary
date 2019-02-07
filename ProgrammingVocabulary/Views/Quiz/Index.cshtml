@@ -16,7 +16,7 @@
 
     <div class="flip-card">
         <div class="flip-card-inner">
-            <div class="flip-card-front">
+            <div class="flip-card-front-quiz">
                 <h1>
                     @Html.DisplayFor(modelItem => item.Word)
                 </h1>
@@ -24,21 +24,19 @@
             </div>
             <div class="flip-card-back">
                 <script>
-  $(function() {
-    $('#myCheckbox').change(function() {
-       $('#ShowHideMe').toggle($(this).is(':checked'));
-     });
-  });
+
                 </script>
-                <input type="checkbox" id="myCheckbox">
-                <div id="ShowHideMe">
-                    <p>@Html.DisplayFor(modelItem => item.Definition)</p>
-                </div>
+
+
+                
+
 
                 <p>
                     @Html.TextArea("definition", null, new { @class = "form-control" })
 
                 </p>
+                <p>Check your answer at the link</p>
+
                 <p>
                     <a href=" @Html.DisplayFor(modelItem => item.Link)" target="_blank">@Html.DisplayFor(modelItem => item.Link)</a>
                 </p>

@@ -24,6 +24,7 @@ namespace ProgrammingVocabulary.Controllers
         {
             var applicationDbContext = _context.Vocabulary.Include(v => v.Language).Include(v => v.User);
             return View(await applicationDbContext.ToListAsync());
+
         }
 
         // GET: Quiz/Details/5
@@ -152,7 +153,7 @@ namespace ProgrammingVocabulary.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var vocabulary = await _context.Vocabulary.FindAsync(id);
+            var vocabulary = await _context.Vocabulary.Include(v => v.User).Include(u => u.UserVocabulary).SingleOrDefaultAsync(Vocabulary => Vocabulary.VocabularyId == id);
             _context.Vocabulary.Remove(vocabulary);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
