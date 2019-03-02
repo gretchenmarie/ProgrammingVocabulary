@@ -32,7 +32,7 @@ namespace ProgrammingVocabulary.Controllers
             _context = ctx;
         }
 
-
+        //user favorite list
         public async Task<IActionResult> FavoriteVocabulary([FromRoute]int id)
         {
             ApplicationUser user = await GetCurrentUserAsync();
@@ -53,6 +53,7 @@ namespace ProgrammingVocabulary.Controllers
 
 
         // GET: Vocabulary
+        //individual languages for the separate pages
         public async Task<IActionResult> Index( string sortOrder)
         {         
             var applicationDbContext = _context.Vocabulary.Include(v => v.Language).OrderBy(v => v.Word);
@@ -218,6 +219,7 @@ namespace ProgrammingVocabulary.Controllers
         }
 
         // POST: Vocabularies/Delete/5
+        //deleting from multiple tables
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed( int id)
